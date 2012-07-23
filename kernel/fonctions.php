@@ -136,6 +136,25 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 	return array($premierMessageAafficher, $nombreDePages, $page);
 }
 
+function display_active_page ($pattern)
+{
+	$special_pages = array('index', 'random');
+	
+	if (!in_array($pattern, $special_pages))
+	{
+		$pattern = '#'.$pattern.'#';
+
+		if (preg_match($pattern, $_SERVER['REQUEST_URI']))
+		{
+			echo ' class="active"';
+		}
+	}
+	elseif ($pattern == 'random' AND preg_match('#random#', $_SERVER['REQUEST_URI']) OR ($pattern == 'index' AND $_SERVER['REQUEST_URI'] == '/'))
+	{
+		echo ' class="active"';
+	}
+}
+
 function cut_tweet($chaine)
 {
 	$domaine = 'internet-facts.com';
