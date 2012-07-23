@@ -35,7 +35,7 @@ require 'kernel/config.php';
 	<div id="header">
 		<div class="content">
 			<div id="logo">
-				<a href="/" title="Internet Facts">Internet Facts</a>
+				<a href="/" title="Internet Facts"><img src="/images/logo.png" alt="Logo Internet Facts" />Internet Facts</a>
 			</div>
 
 			<div id="social-networks">

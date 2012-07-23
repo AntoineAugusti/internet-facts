@@ -57,21 +57,14 @@ function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirec
 		}
 	}
 
-	if ($page > 1)
-	{
-		echo '<span class="page_bottom"><a href="?'.$nom_lien_page.'='.$page3.''.$div_redirection.'">'.$previous_page.'</a> || ';
-	}
-	if ($page == 1 AND $page < $nombreDePages)
-	{
-		echo '<span class="page_bottom">';
-	}
+	
 	if ($page < $nombreDePages)
 	{
-		echo '<a href="?'.$nom_lien_page.'='.$page2.''.$div_redirection.'">'.$next_page.'</a>';
+		echo '<span class="page_bottom"><a href="?'.$nom_lien_page.'='.$page2.''.$div_redirection.'" title="'.$next_page.'">'.$next_page.'</a></span>';
 	}
-	if ($nombreDePages != '1')
+	if ($page > 1)
 	{
-		echo '</span><br>';
+		echo '<span class="page_bottom"><a href="?'.$nom_lien_page.'='.$page3.''.$div_redirection.'" title="'.$previous_page.'">'.$previous_page.'</a></span>';
 	}
 
 	echo '<div class="clear"></div>';
@@ -97,38 +90,24 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 	$page2 = $page + 1;
 	$page3 = $page - 1;
 
-	if ($page > 1)
+	$page_index = '';
+	if ($margin)
 	{
-		if ($margin)
-		{
-			echo '<span class="page page_index"><a href="?'.$lien.'='.$page3.''.$div_redirection.'">'.$previous_page.'</a> || ';
-		}
-		else
-		{
-			echo '<span class="page"><a href="?'.$lien.'='.$page3.''.$div_redirection.'">'.$previous_page.'</a> || ';
-		}
+		$margin_page = 'page_index';
 	}
 
-	if ($page == 1 AND $page < $nombreDePages)
-	{
-		if ($margin)
-		{
-			echo '<span class="page page_index">';
-		}
-		else
-		{
-			echo '<span class="page">';
-		}
-	}
-
+	
 	if ($page < $nombreDePages)
 	{
-		echo '<a href="?'.$lien.'='.$page2.''.$div_redirection.'">'.$next_page.'</a>';
+		echo '<span class="page '.$margin_page.'"><a href="?'.$lien.'='.$page2.''.$div_redirection.'" title="'.$next_page.'">'.$next_page.'</a></span>';
 	}
-	
-	if ($nombreDePages != '1')
+	if ($page > 1)
 	{
-		echo '</span><br>';
+		echo '<span class="page '.$margin_page.'"><a href="?'.$lien.'='.$page3.''.$div_redirection.'" title="'.$previous_page.'">'.$previous_page.'</a></span>';
+	}
+	if ($nombreDePages != 1)
+	{
+		echo '<br>';
 	}
 
 	$premierMessageAafficher = ($page - 1) * $nb_messages_par_page;
@@ -184,7 +163,7 @@ function cut_tweet($chaine)
 
 function date_et_auteur ($auteur, $date_fact, $on, $by, $view_his_facts) 
 {
-	echo '<span class="right">'.$by.' <a href="author/'.$auteur.'" title="'.$view_his_facts.'">'.$auteur.'</a> '.$on.' '.$date_fact.'</span><br>';
+	echo '<span class="right">'.$by.' <a href="/author/'.$auteur.'" title="'.$view_his_facts.'">'.$auteur.'</a> '.$on.' '.$date_fact.'</span><br>';
 }
 
 function share_fb_twitter ($id_fact, $txt_fact, $share) 
