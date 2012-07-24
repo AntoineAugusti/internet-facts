@@ -10,10 +10,10 @@ RewriteRule ^fact/([0-9]+)$ index.php?mod=fact&id=$1 [L,QSA]
 RewriteRule ^author/([a-z0-9_]+)$ index.php?mod=author&username=$1 [L,QSA]
 RewriteRule ^author/([a-z0-9_]+)?p=([0-9]+)$ index.php?mod=author&username=$1&p=$2 [L,QSA]
 
-ErrorDocument 404 /404
-ErrorDocument 403 /404
-ErrorDocument 500 /404
-ErrorDocument 503 /404
+ErrorDocument 404 http://internet-facts.com/404
+ErrorDocument 403 http://internet-facts.com/404
+ErrorDocument 500 http://internet-facts.com/404
+ErrorDocument 503 http://internet-facts.com/404
 
 
 # MOD_DEFLATE COMPRESSION

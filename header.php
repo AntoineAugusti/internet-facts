@@ -6,8 +6,7 @@ require 'kernel/config.php';
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Internet Facts</title>
-		<meta name="description" content="Internet Facts : some facts you will probably don't know about everything on Earth."/>
+		<?php display_title_and_description(); ?>
 
 		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png"/>
 		<meta property="og:image" content="/images/icon_facebook.png" /> 

@@ -146,9 +146,9 @@ function display_active_page ($pattern)
 	}
 }
 
-function isset_is_int ($var)
+function isset_is_int ($int)
 {
-	if (isset($var) AND is_int($var))
+	if (is_numeric($int))
 	{
 		return TRUE;
 	}
@@ -160,53 +160,95 @@ function isset_is_int ($var)
 
 function display_title_and_description ()
 {
+	$default_title = ' | Internet Facts';
+	$default_description = ' Internet Facts: facts about everything in your everyday life that you don\'t know.';
+
 	if (empty($_GET['mod'])) // Not fact / random / author.
 	{
 		if (preg_match('#addfact#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'Add a Fact'.$default_title;
+			$description = 'Add your own Fact and be published on the website.'.$default_description;
 		}
 		elseif (preg_match('#newsletter#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'Newsletter'.$default_title;
+			$description = 'Subscribe to our newsletter and get some new fresh Facts every Monday.'.$default_description;
 		}
 		elseif (preg_match('#about#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'About'.$default_title;
+			$description = 'About the website: our team, our work, our project.'.$default_description;
 		}
 		elseif (preg_match('#contact#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'Contact'.$default_title;
+			$description = 'Leave us a message and stay in touch with us.'.$default_description;
 		}
 		elseif (preg_match('#admin#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'Admin'.$default_title;
+			$description = 'Control everything with the admin panel.'.$default_description;
 		}
 		elseif (preg_match('#404#', $_SERVER['REQUEST_URI']))
 		{
-			$title = '';
-			$description = '';
+			$title = 'Error'.$default_title;
+			$description = 'Oops, an error occured!'.$default_description;
 		}
 		else // Index ?
 		{
-			$title = '';
-			$description = '';
+			$title = 'Internet Facts | Facts about everything you want to know';
+			$description = $default_description;
 		}
 	}
-	elseif ($_GET['mod'] == 'random')
+	elseif ($_GET['mod'] == 'random' OR $_GET['mod'] == 'author')
 	{
+		if ($_GET['mod'] == 'author' AND isset($_GET['username']) AND username_is_valid($_GET['username'])) // author
+		{
+			$username = $_GET['username'];
+
+			$title = $username.'\'s Facts';
+			$description = 'Facts by '.$username.' on Internet Facts. View all his Facts.';
+		}
+		else // Random
+		{
+			$title = 'Random Facts';
+			$description = 'Random Facts about everything you want to know.';
+		}
+
 		if (isset_is_int($_GET['p']))
 		{
-			$titre = '';
-			$description = '';
+			$get_page = (int) $_GET['p'];
+
+			$title .= ' - Page '.$get_page.$default_title;
+			$description .= $default_description;
+		}
+		else
+		{
+			$title .= $default_title;
+			$description .= $default_description;
+		}
+	}
+	elseif ($_GET['mod'] == 'fact') // fact
+	{
+		if (isset_is_int($_GET['id']))
+		{
+			$id_fact = (int) $_GET['id'];
+			$query = mysql_query("SELECT text_fact FROM facts WHERE approved = '1' AND id = '".$id_fact."'");
+
+			if (mysql_num_rows($query) == 1)
+			{
+				$fetch = mysql_fetch_array($query);
+				$text_fact = $fetch['text_fact'];
+			}
+
+			$title = 'Fact #'.$id_fact.$default_title;
+			$description = 'Fact #'.$id_fact.': \''.$text_fact.'\'';
 		}
 	}
 
+	echo '<title>'.$title.'</title>'."\r\n";
+	echo '<meta name="description" content="'.$description.'"/>'."\r\n\r\n";
 }
 
 function cut_tweet($chaine)
@@ -248,7 +290,7 @@ function share_fb_twitter ($id_fact, $txt_fact, $share)
 
 	$txt_tweet = cut_tweet($txt_fact);
 	$url_encode = urlencode('http://'.$domaine.'/fact/'.$id_fact.'');
-	echo '<div class="share_fb_twitter"><span class="fade_jquery"><iframe src="//www.facebook.com/plugins/like.php?href= '.$url_encode.'&amp;send=FALSE&amp;layout=button_count&amp;width=110&amp;show_faces=FALSE&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="TRUE"></iframe></span><span class="right fade_jquery"><a href="http://twitter.com/share?url=http://'.$domaine.'/quote-'.$id_fact.'&text='.$txt_tweet.'" class="twitter-share-button" data-count="none">Tweet</a></span></div>';
+	echo '<div class="share_fb_twitter"><span class="fade_jquery"><iframe src="//www.facebook.com/plugins/like.php?href= '.$url_encode.'&amp;send=FALSE&amp;layout=button_count&amp;width=110&amp;show_faces=FALSE&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="TRUE"></iframe></span><span class="right fade_jquery"><a href="http://twitter.com/share?url=http://'.$domaine.'/fact/'.$id_fact.'&text='.$txt_tweet.'" class="twitter-share-button" data-count="none">Tweet</a></span></div>';
 }
 
 function captchaMath ()
