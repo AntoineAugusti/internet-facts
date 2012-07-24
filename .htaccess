@@ -7,6 +7,8 @@ RewriteRule ^([0-9]+)$ $1.php [L,QSA]
 RewriteRule ^random index.php?mod=random [L,QSA]
 RewriteRule ^random?p=([0-9]+)$ index.php?mod=random&p=$1 [L,QSA]
 RewriteRule ^fact/([0-9]+)$ index.php?mod=fact&id=$1 [L,QSA]
+RewriteRule ^author/([a-z0-9_]+)$ index.php?mod=author&username=$1 [L,QSA]
+RewriteRule ^author/([a-z0-9_]+)?p=([0-9]+)$ index.php?mod=author&username=$1&p=$2 [L,QSA]
 
 ErrorDocument 404 /404
 ErrorDocument 403 /404

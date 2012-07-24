@@ -115,6 +115,18 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 	return array($premierMessageAafficher, $nombreDePages, $page);
 }
 
+function username_is_valid ($username)
+{
+	if (preg_match("#^[a-z0-9_]+$#", $username))
+	{	
+		return TRUE;
+	}
+	else
+	{	
+		return FALSE;
+	}
+}
+
 function display_active_page ($pattern)
 {
 	$special_pages = array('index', 'random');
@@ -128,10 +140,73 @@ function display_active_page ($pattern)
 			echo ' class="active"';
 		}
 	}
-	elseif ($pattern == 'random' AND preg_match('#random#', $_SERVER['REQUEST_URI']) OR ($pattern == 'index' AND $_SERVER['REQUEST_URI'] == '/'))
+	elseif ($pattern == 'random' AND preg_match('#random#', $_SERVER['REQUEST_URI']) OR ($pattern == 'index' AND ($_SERVER['REQUEST_URI'] == '/' OR preg_match('#\?p#', $_SERVER['REQUEST_URI'])) AND !preg_match('#random|author#', $_SERVER['REQUEST_URI'])))
 	{
 		echo ' class="active"';
 	}
+}
+
+function isset_is_int ($var)
+{
+	if (isset($var) AND is_int($var))
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+function display_title_and_description ()
+{
+	if (empty($_GET['mod'])) // Not fact / random / author.
+	{
+		if (preg_match('#addfact#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		elseif (preg_match('#newsletter#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		elseif (preg_match('#about#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		elseif (preg_match('#contact#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		elseif (preg_match('#admin#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		elseif (preg_match('#404#', $_SERVER['REQUEST_URI']))
+		{
+			$title = '';
+			$description = '';
+		}
+		else // Index ?
+		{
+			$title = '';
+			$description = '';
+		}
+	}
+	elseif ($_GET['mod'] == 'random')
+	{
+		if (isset_is_int($_GET['p']))
+		{
+			$titre = '';
+			$description = '';
+		}
+	}
+
 }
 
 function cut_tweet($chaine)
