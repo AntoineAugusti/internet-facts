@@ -67,8 +67,12 @@ textarea.uniform {
   font-weight: normal;
   padding: 3px;
   color: #777;
-  background: url('bg-input-focus.png') repeat-x 0px 0px;
-  background: url('bg-input.png') repeat-x 0px 0px;
+  background: -webkit-gradient( linear, left top, left bottom, from(#FFF), to(#F1F1F1));
+  background: -webkit-linear-gradient( top, #FFF, #F1F1F1);
+  background: -moz-linear-gradient( top, #FFF, #F1F1F1);
+  background: -o-linear-gradient( top, #FFF, #F1F1F1);
+  background: linear-gradient( top, #FFF, #F1F1F1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF', endColorstr='#F1F1F1',GradientType=0)
   border-top: solid 1px #aaa;
   border-left: solid 1px #aaa;
   border-bottom: solid 1px #ccc;
@@ -87,7 +91,6 @@ textarea.uniform:focus {
   -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
   box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
   border-color: #999;
-  background: url('bg-input-focus.png') repeat-x 0px 0px;
 }
 
 /* SPRITES */
