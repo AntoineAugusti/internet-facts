@@ -127,6 +127,16 @@ function username_is_valid ($username)
 	}
 }
 
+function meta_refresh ($time, $url)
+{
+	if (!is_numeric($time))
+	{
+		$time = '5';
+	}
+
+	echo '<meta http-equiv="refresh" content="'.$time.';url=\''.$url.'\'">';
+}
+
 function display_active_page ($pattern)
 {
 	$special_pages = array('index', 'random');

@@ -16,6 +16,7 @@ require 'kernel/config.php';
 		<meta name="viewport" content="width=device-width">
 
 		<script src="//code.jquery.com/jquery-latest.min.js"></script>
+		<script src="/js/uniform.js"></script>
 
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
