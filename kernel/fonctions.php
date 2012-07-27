@@ -117,12 +117,24 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 
 function username_is_valid ($username)
 {
-	if (preg_match("#^[a-z0-9_]+$#", $username))
+	if (preg_match("#^[a-z0-9_]{4,}$#", $username))
 	{	
 		return TRUE;
 	}
 	else
 	{	
+		return FALSE;
+	}
+}
+
+function email_is_valid ($email)
+{
+	if(preg_match("#[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
+	{
+		return TRUE;
+	}
+	else
+	{
 		return FALSE;
 	}
 }
