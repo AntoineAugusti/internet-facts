@@ -184,6 +184,37 @@ img.baby_cry {
 	-moz-box-shadow:0 1px 5px rgba(0,0,0,0.5),inset 0 -1px 0 rgba(0,0,0,0.3);
 	-webkit-box-shadow:0 1px 5px rgba(0,0,0,0.5),inset 0 -1px 0 rgba(0,0,0,0.3)
 }
+#intro_like .img_infos {
+	width: 128px;
+	height: 128px;
+	float: right;
+	background: url(/images/icones/infos.png);
+	display: block;
+	margin: 75px 35px 0 0;
+}
+#submit_fact_user input[type=text], #submit_facts_user input[type=email]
+{
+	width: 200px;
+}
+.margin_top_bottom_15 {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.min_info {
+	font-size: 12px;
+	font-style: italic;
+}
+.add_fact{
+	width: 600px;
+}
+.img_add_fact {
+	width: 128px;
+	height: 128px;
+	float: right;
+	background: url(/images/icones/add_fact.png);
+	display: block;
+	margin: 120px 15px 0 0;
+}  
 #textarea_text_fact
 {
 	width: 99%;
@@ -297,7 +328,7 @@ img.baby_cry {
 	position: relative;
 	opacity: 0;
 }
-#content ul {
+#content ul, ul.margin {
 	margin-left: 20px;
 	list-style: inside square;
 }
@@ -374,7 +405,7 @@ img.baby_cry {
 	width: 215px;
 	margin-left: 260px;
 }
-#intro {
+#intro, #intro_like {
 	background: url(/images/dark_gray.png);
 	margin:50px 0;
 	padding: 10px 20px;
