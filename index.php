@@ -29,7 +29,7 @@ include 'header.php';
 			else
 			{
 				$username = mysql_real_escape_string($_GET['username']);
-				$donnees = mysql_fetch_array(mysql_query("SELECT COUNT(*) AS nb_facts FROM facts WHERE approved = '1' AND username = '".$username."'"));
+				$donnees = mysql_fetch_array(mysql_query("SELECT COUNT(*) AS nb_facts FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author AND e.username = '".$username."'"));
 			}
 		}
 
@@ -87,11 +87,11 @@ include 'header.php';
 	// Display the title if we have only one fact and do the SQL query in order to loop
 	if (empty($_GET['mod'])) // index
 	{
-		$reponse = mysql_query("SELECT id, text_fact, username AS auteur, date FROM facts WHERE approved = '1' ORDER BY id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
+		$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author ORDER BY f.id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
 	}
 	elseif($_GET['mod'] == 'random') // random
 	{
-		$reponse = mysql_query("SELECT id, text_fact, username AS auteur, date FROM facts WHERE approved = '1' ORDER BY RAND() LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
+		$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author ORDER BY RAND() LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
 	}
 	elseif ($_GET['mod'] == 'fact') // fact
 	{
@@ -105,7 +105,7 @@ include 'header.php';
 		{
 			echo '<h1>Fact #'.$id_fact.'</h1>';
 
-			$reponse = mysql_query("SELECT id, text_fact, username AS auteur, date FROM facts WHERE approved = '1' AND id = '".$id_fact."'");
+			$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND f.id = '".$id_fact."' AND f.id_author = e.id");
 
 			if (mysql_num_rows($reponse) == 0)
 			{
@@ -122,7 +122,7 @@ include 'header.php';
 		}
 		else
 		{
-			$reponse = mysql_query("SELECT id, text_fact, username AS auteur, date FROM facts WHERE approved = '1' AND username = '".$username."' ORDER BY id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
+			$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.username = '".$username."' AND e.id = f.id_author ORDER BY f.id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
 		}
 	}
 
