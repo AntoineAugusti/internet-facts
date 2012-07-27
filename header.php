@@ -12,6 +12,7 @@ require 'kernel/config.php';
 		<meta property="og:image" content="/images/icon_facebook.png" /> 
 		
 		<link rel="stylesheet" href="/css/uniform.css" type="text/css" media="all">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300|Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
 		<meta name="viewport" content="width=device-width">
 
