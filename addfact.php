@@ -30,10 +30,11 @@ echo '
 			<br /><br />
 			Your email:<br />
 			<input type="text" name="email" id="email"><br />
-			<span class="min_info">If you want to add more Facts with your username, you will have to use the same email. Please enter a valid email address.</span>
+			<span class="min_info">If you want to add more Facts with your username, you will have to use the same email. Please enter a valid email address. It will never be published on the site.</span>
 			<br /><br />
 			Your Fact:<br/>
-			<textarea name="text_fact" id="textarea_text_fact" placeholder="Write your Fact just here, with love."></textarea>
+			<textarea name="text_fact" id="textarea_text_fact" placeholder="Write your Fact just here, with all your love."></textarea><br/>
+			<span class="min_info">Minimum 50 characters.</span>
 			<br /><br />
 			<input type="submit" value="Add my fact"><br />
 			<div class="clear"></div>
