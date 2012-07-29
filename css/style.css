@@ -119,6 +119,9 @@ body {
 .italic {
 	font-style: italic;
 }
+.bold {
+	font-weight: bold;
+}
 .post {
   padding: 15px 1.5em;
   color: #555;
@@ -428,4 +431,8 @@ img.baby_cry {
 }
 #notification {
 	display: none;
+}
+#facebook_comment_box {
+	width: 600px;
+	margin: 70px auto;
 }
