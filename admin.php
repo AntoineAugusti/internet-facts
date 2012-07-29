@@ -51,7 +51,7 @@ elseif($_SESSION['logged'] == TRUE)
 		<form action="/ajax/add_fact.php" method="post" id="submit_fact_admin">
 			<textarea name="text_fact" id="textarea_text_fact"></textarea>
 			<br /><br />
-			<input type="submit" value="Add my fact"><br>
+			<input type="submit" value="Add my fact"><br/>
 			<div class="clear"></div>
 		</form>
 	</div>
