@@ -18,7 +18,7 @@ if (preg_match('/internet-facts.com/', $_SERVER['SERVER_NAME']) AND $_SESSION['l
 	}
 	
 }
-elseif (preg_match('/internet-facts.com/', $_SERVER['SERVER_NAME']) AND $_POST['is_admin'] == TRUE AND !empty($_POST['text_fact']) AND !empty($_POST['username']) AND !empty($_POST['email']))
+elseif (preg_match('/internet-facts.com/', $_SERVER['SERVER_NAME']) AND $_POST['is_visitor'] == TRUE AND !empty($_POST['text_fact']) AND !empty($_POST['username']) AND !empty($_POST['email']))
 {
 	/*
 	Return a code to the Ajax function after a visitor tried to add a Fact
