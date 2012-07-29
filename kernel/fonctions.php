@@ -107,7 +107,7 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 	}
 	if ($nombreDePages != 1)
 	{
-		echo '<br>';
+		echo '<br/>';
 	}
 
 	$premierMessageAafficher = ($page - 1) * $nb_messages_par_page;
@@ -220,7 +220,7 @@ function display_title_and_description ()
 		else // Index ?
 		{
 			$title = 'Internet Facts | Facts about everything you want to know';
-			$description = $default_description;
+			$description = substr($default_description, 1);
 		}
 	}
 	elseif ($_GET['mod'] == 'random' OR $_GET['mod'] == 'author')
@@ -296,13 +296,15 @@ function cut_tweet($chaine)
 		$chaine .= ' '.$username_twitter;
 	}
 
-	$chaine = str_replace(' ', '%20', $chaine);
+	$search = array ('%', ' ');
+	$replace = array('%25', '%20');
+	$chaine = str_replace($search, $replace, $chaine);
 	return $chaine;
 }
 
 function date_et_auteur ($auteur, $date_fact, $on, $by, $view_his_facts) 
 {
-	echo '<span class="right">'.$by.' <a href="/author/'.$auteur.'" title="'.$view_his_facts.'">'.$auteur.'</a> '.$on.' '.$date_fact.'</span><br>';
+	echo '<span class="right">'.$by.' <a href="/author/'.$auteur.'" title="'.$view_his_facts.'">'.$auteur.'</a> '.$on.' '.$date_fact.'</span><br/>';
 }
 
 function share_fb_twitter ($id_fact, $txt_fact, $share) 
@@ -312,7 +314,7 @@ function share_fb_twitter ($id_fact, $txt_fact, $share)
 
 	$txt_tweet = cut_tweet($txt_fact);
 	$url_encode = urlencode('http://'.$domaine.'/fact/'.$id_fact.'');
-	echo '<div class="share_fb_twitter"><span class="fade_jquery"><iframe src="//www.facebook.com/plugins/like.php?href= '.$url_encode.'&amp;send=FALSE&amp;layout=button_count&amp;width=110&amp;show_faces=FALSE&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="TRUE"></iframe></span><span class="right fade_jquery"><a href="http://twitter.com/share?url=http://'.$domaine.'/fact/'.$id_fact.'&text='.$txt_tweet.'" class="twitter-share-button" data-count="none">Tweet</a></span></div>';
+	echo '<div class="share_fb_twitter"><span class="fade_jquery"><div class="fb-like" data-href="http://internet-facts.com/fact-'.$id_fact.'" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div></span><span class="right fade_jquery"><a href="http://twitter.com/share?url=http://'.$domaine.'/fact/'.$id_fact.'/&text='.$txt_tweet.'" class="twitter-share-button" data-count="none">Tweet</a></span></div>';
 }
 
 function captchaMath ()
