@@ -6,7 +6,9 @@ include 'header.php';
 	{
 		echo '
 		<div id="intro">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada lobortis tortor eu luctus. Nunc lobortis pretium nunc eu dignissim. Ut rhoncus ipsum hendrerit nibh varius nec cursus ligula mollis. Suspendisse sed orci justo, sed interdum nisl. Mauris sit amet commodo urna. Curabitur vel mi at risus lacinia tempor.<br>
+			Our life is full of details. Small details that are important. Aren\'t you curious? Want to know all those little details that make the beauty of our lives? You will learn amazing things. You will impress your friends. Give it a try and let\'s read some Facts!<br/>
+			<br />
+			Internet Facts: facts about everything in your everyday life that you don\'t know.<br/>
 			<span class="right"><a onclick="hide_intro();return false;" title="Hide the introduction">Okey, I understand. Hide this!</a></span>
 			<div class="clear"></div>
 		</div>';
@@ -151,9 +153,9 @@ include 'header.php';
 			}
 		?>
 			<div class="post <?php echo $div_child; ?>">
-				<?php echo $txt_fact; ?><br>
+				<?php echo $txt_fact; ?><br/>
 				<div class="footer_fact">
-					<a href="/fact/<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
+					<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
 				</div>
 				<?php share_fb_twitter ($id_fact,$txt_fact,$share); ?> 
 			</div>
@@ -166,12 +168,15 @@ include 'header.php';
 		{
 			display_page_bottom($page, $nombreDePages, 'p', NULL, $previous_page, $next_page);
 		}
+		else
+		{
+			// Display comments for single Facts
+			echo '
+			<div id="facebook_comment_box">
+				<div class="fb-comments" data-href="http://internet-facts.com/fact/'.$id_fact.'/" data-num-posts="5" data-width="600"></div>
+			</div>';
+		}
 	}
-	?>
-	
 
-
-
-<?php
 include 'footer.php';
 ?>
