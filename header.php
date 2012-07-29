@@ -9,7 +9,7 @@ require 'kernel/config.php';
 		<?php display_title_and_description(); ?>
 
 		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png"/>
-		<meta property="og:image" content="/images/icon_facebook.png" /> 
+		<meta property="og:image" content="http://internet-facts.com/images/icon_facebook.png" /> 
 		
 		<link rel="stylesheet" href="/css/uniform.css" type="text/css" media="all">
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300|Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -33,6 +33,14 @@ require 'kernel/config.php';
 		</script>
 	</head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=453772431323467";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<div id="header">
 		<div class="content">
 			<div id="logo">
