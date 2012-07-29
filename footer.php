@@ -3,7 +3,9 @@
 	<div id="footer">
 		<div class="content">
 			<div class="left">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada lobortis tortor eu luctus. Nunc lobortis pretium nunc eu dignissim. Ut rhoncus ipsum hendrerit nibh varius nec cursus ligula mollis. Suspendisse sed orci justo, sed interdum nisl. Mauris sit amet commodo urna. Curabitur vel mi at risus lacinia tempor.
+				Internet Facts: facts about everything in your everyday life that you don't know. Discover all those little details that make the beauty of our lives. Read, learn and surprise your loved ones.<br/>
+				<br />
+				You know an extraordinay Fact and it's not already on the website? Build with us Internet Facts and <a href="/addfact" title="Add your Fact">add your own Fact</a> to the website right now!
 			</div>
 
 			<div class="right">
