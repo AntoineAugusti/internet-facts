@@ -172,6 +172,7 @@ include 'header.php';
 		{
 			// Display comments for single Facts
 			echo '
+			<h2>Leave a comment</h2>
 			<div id="facebook_comment_box">
 				<div class="fb-comments" data-href="http://internet-facts.com/fact/'.$id_fact.'/" data-num-posts="5" data-width="600"></div>
 			</div>';

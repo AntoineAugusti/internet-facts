@@ -126,7 +126,7 @@ body {
   padding: 15px 1.5em;
   color: #555;
   text-align: left;
-  background: #E0E0E0 url('http://p-w.fr/bmg4q') center;
+  background: #E0E0E0 url(/images/noise-gray.png) center;
   margin: 0 3em 40px;
   font-family: 'Ubuntu';
   line-height: 25px;
@@ -217,6 +217,14 @@ img.baby_cry {
 	background: url(/images/icones/add_fact.png);
 	display: block;
 	margin: 120px 15px 0 0;
+}
+.img_chat {
+	width: 128px;
+	height: 128px;
+	float: right;
+	background: url(/images/icones/chat.png);
+	display: block;
+	margin: 85px 15px 50px 30px;
 }  
 #textarea_text_fact
 {
@@ -434,5 +442,5 @@ img.baby_cry {
 }
 #facebook_comment_box {
 	width: 600px;
-	margin: 70px auto;
+	margin: 50px auto 70px auto;
 }
