@@ -145,14 +145,14 @@ include 'header.php';
 
 			if ($i == 1)
 			{
-				$div_child = 'first-child';
+				$div_child = ' first-child';
 			}
 			elseif ($i == $nb_messages_page)
 			{
-				$div_child = 'last-child';
+				$div_child = ' last-child';
 			}
 		?>
-			<div class="post <?php echo $div_child; ?>">
+			<div class="post<?php echo $div_child; ?>">
 				<?php echo $txt_fact; ?><br/>
 				<div class="footer_fact">
 					<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
