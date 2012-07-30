@@ -2,4 +2,4 @@
 kernel/config.php
 sftp-config.json
 *.sublime-*
-images/icones/menu/.DS_Store
+images/icones/.DS_Store
