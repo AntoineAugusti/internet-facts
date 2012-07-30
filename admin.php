@@ -44,9 +44,21 @@ elseif ($_GET['action'] == 'send') // Send the form
 }
 elseif($_SESSION['logged'] == TRUE)
 {
+	$query = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '0' AND f.id_author = e.id");
+	$nb_facts_moderation = mysql_num_rows($query);
+
+	$i = 1;
+
+	$txt_fact = 'Fact';
+
+	if ($nb_facts_moderation >= 2)
+	{
+		$txt_fact .= 's';
+	}
+
 	echo '
+	<h2>Add a Fact</h2>
 	<div class="post first-child">
-		<h2>Add a Fact</h2>
 		<div id="notification"></div>
 		<form action="/ajax/add_fact.php" method="post" id="submit_fact_admin">
 			<textarea name="text_fact" id="textarea_text_fact"></textarea>
@@ -55,7 +67,33 @@ elseif($_SESSION['logged'] == TRUE)
 			<div class="clear"></div>
 		</form>
 	</div>
+	<h2>Moderate Facts<span class="right"><span class="blue italic" id="nb_facts_moderation">'.$nb_facts_moderation.'</span> '.$txt_fact.'</span></h2>
 	';
+
+	while ($result = mysql_fetch_array($query))
+	{
+		$id_fact = $result['id'];
+		$txt_fact = $result['text_fact'];
+		$auteur = $result['auteur']; 
+		$date_fact = $result['date'];
+
+		// We want to know if the fact is the first or the last of the page in order to change the margin
+		$div_child = '';
+
+		if ($i == 1)
+		{
+			$div_child = 'first-child';
+		}
+	?>
+		<div class="post <?php echo $div_child; ?>">
+			<?php echo $txt_fact; ?><br/>
+			<div class="footer_fact">
+				<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php display_moderate_facts($id_fact); ?><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
+			</div>
+		</div>
+	<?php
+		$i++;
+	}
 }
 
 include 'footer.php';

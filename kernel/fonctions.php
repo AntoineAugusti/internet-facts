@@ -1,5 +1,4 @@
 <?php
-
 function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirection, $previous_page, $next_page)
 {
 	$page2 = $page + 1;
@@ -166,6 +165,16 @@ function display_active_page ($pattern)
 	{
 		echo ' class="active"';
 	}
+}
+
+function display_moderate_facts($id)
+{
+	echo '
+	<div class="moderate_fact_button">
+		<a href="" onclick="moderacte_fact(\'yes\','.$id.'); return false;"><span class="mini_icone icon_success"></span></a>
+		<a href="" onclick="edit_fact('.$id.'); return false;"><span class="mini_icone edit"></span></a>
+		<a href="" onclick="moderacte_fact(\'yes\','.$id.'); return false;"><span class="mini_icone delete" alt="Icone"></a>
+	</div>';
 }
 
 function isset_is_int ($int)
