@@ -171,9 +171,9 @@ function display_moderate_facts($id)
 {
 	echo '
 	<div class="moderate_fact_button">
-		<a href="" onclick="moderacte_fact(\'yes\','.$id.'); return false;"><span class="mini_icone icon_success"></span></a>
+		<a href="" onclick="moderate_fact(\'yes\','.$id.'); return false;"><span class="mini_icone icon_success"></span></a>
 		<a href="" onclick="edit_fact('.$id.'); return false;"><span class="mini_icone edit"></span></a>
-		<a href="" onclick="moderacte_fact(\'yes\','.$id.'); return false;"><span class="mini_icone delete" alt="Icone"></a>
+		<a href="" onclick="moderate_fact(\'no\','.$id.'); return false;"><span class="mini_icone delete" alt="Icone"></a>
 	</div>';
 }
 
@@ -280,6 +280,24 @@ function display_title_and_description ()
 
 	echo '<title>'.$title.'</title>'."\r\n";
 	echo '<meta name="description" content="'.$description.'"/>'."\r\n\r\n";
+}
+
+function email_blue ($txt)
+{
+	return '<span style="color:#678DB7;font-weight:bold">'.$txt.'</span>';
+}
+
+function email_fact ($id_fact, $txt_fact, $auteur, $date_fact)
+{
+	$str = '
+	<div style="padding:15px 1.5em;color:#555;background:#E0E0E0;margin:0 3em 40px;line-height:25px;border-bottom:1px solid #CCC;text-align:justify;">
+		'.$txt_fact.'
+		<div style="font-size:90%;margin-top: 5px;">
+			<a href="http://internet-facts.com/fact/'.$id_fact.'/" title="View Fact #'.$id_fact.'">#'.$id_fact.'</a><span style="float:right">by <a href="http://internet-facts.com/author/'.$auteur.'" title="View his Facts">'.email_blue($auteur).'</a> on '.$date_fact.'</span>
+		</div>
+	</div>';
+
+	return $str;
 }
 
 function cut_tweet($chaine)

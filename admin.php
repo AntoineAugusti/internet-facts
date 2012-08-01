@@ -67,7 +67,7 @@ elseif($_SESSION['logged'] == TRUE)
 			<div class="clear"></div>
 		</form>
 	</div>
-	<h2>Moderate Facts<span class="right"><span class="blue italic" id="nb_facts_moderation">'.$nb_facts_moderation.'</span> '.$txt_fact.'</span></h2>
+	<h2>Moderate Facts<span class="right"><span class="blue italic" id="nb_facts_moderation">'.$nb_facts_moderation.'</span> <span id="txt_fact">'.$txt_fact.'</span></span></h2>
 	';
 
 	while ($result = mysql_fetch_array($query))
@@ -85,9 +85,9 @@ elseif($_SESSION['logged'] == TRUE)
 			$div_child = 'first-child';
 		}
 	?>
-		<div class="post <?php echo $div_child; ?>">
+		<div class="post <?php echo $div_child; ?>" data-id="<?php echo $id_fact; ?>">
 			<?php echo $txt_fact; ?><br/>
-			<div class="footer_fact">
+			<div class="footer_fact" data-id="<?php echo $id_fact; ?>">
 				<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php display_moderate_facts($id_fact); ?><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
 			</div>
 		</div>
