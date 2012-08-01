@@ -141,7 +141,6 @@ body {
 .post {
   padding: 15px 1.5em;
   color: #555;
-  text-align: left;
   background: #E0E0E0 url(/images/noise-gray.png) center;
   margin: 0 3em 40px;
   font-family: 'Ubuntu';
