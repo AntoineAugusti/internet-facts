@@ -57,6 +57,7 @@ require 'kernel/config.php';
 		<a href="/" title="Home"<?php display_active_page('index'); ?>><span class="icon home"></span>Home</a>
 		<a href="/random" title="Random Facts"<?php display_active_page('random'); ?>><span class="icon random"></span>Random Facts</a>
 		<a href="/addfact" title="Add a Fact"<?php display_active_page('addfact'); ?>><span class="icon add"></span>Add a Fact</a>
+		<a href="/search" title="Search a Fact or an user"<?php display_active_page('search'); ?>><span class="icon search"></span>Search</a>
 		<a href="/newsletter" title="Newsletter"<?php display_active_page('newsletter'); ?>><span class="icon newsletter"></span>Newsletter</a>
 		<a href="/about" title="About"<?php display_active_page('about'); ?>><span class="icon about"></span>About</a>
 		<a href="/contact" title="Contact"<?php display_active_page('contact'); ?>><span class="icon contact"></span>Contact</a>

@@ -337,27 +337,31 @@ img.baby_cry {
 	background: url(/images/icones/menu/sprite.png);
 }
 #menu a span.icon.home {
-	background-position: 0 0;
+	background-position: -32px 0;
 }
 #menu a span.icon.random {
-	background-position: -16px 0;
+	background-position: -64px 0;
 	vertical-align: -4px !important;
 }
 #menu a span.icon.add {
-	background-position: -32px 0;
+	background-position: 0 0;
 }
 #menu a span.icon.newsletter {
 	background-position: -48px 0;
 }
 #menu a span.icon.about {
-	background-position: -64px 0;
+	background-position: -96px 0;
 }
 #menu a span.icon.contact {
+	background-position: -16px 0;
+}
+#menu a span.icon.search {
 	background-position: -80px 0;
+	vertical-align: -3px !important;
 }
 #menu a, #menu a:visited {
 	color: #666;
-	margin-right: 35px;
+	margin-right: 47px;
 	height: 24px;
 	font-size: 16px;
 	display: block;
