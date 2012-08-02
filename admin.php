@@ -11,12 +11,12 @@ if ((!$_SESSION['logged'] OR !isset($_SESSION['logged'])) AND $_GET['action'] !=
 		<h2>Sign in</h2>
 		<form action="/admin?action=send" method="post">
 			Username:<br>
-			<input type="text" name="username"><br>
+			<input type="text" name="username"/><br>
 			<br />
 			Password:<br>
-			<input type="password" name="password"><br>
+			<input type="password" name="password"/><br>
 			<br />
-			<input type="submit" value="Log me!"><br>
+			<input type="submit" value="Log me!"/><br>
 			<div class="clear"></div>
 		</form>
 	</div>
@@ -63,7 +63,7 @@ elseif($_SESSION['logged'] == TRUE)
 		<form action="/ajax/add_fact.php" method="post" id="submit_fact_admin">
 			<textarea name="text_fact" id="textarea_text_fact"></textarea>
 			<br /><br />
-			<input type="submit" value="Add my fact"><br/>
+			<input type="submit" value="Add my fact"/><br/>
 			<div class="clear"></div>
 		</form>
 	</div>
@@ -86,7 +86,7 @@ elseif($_SESSION['logged'] == TRUE)
 		}
 	?>
 		<div class="post <?php echo $div_child; ?>" data-id="<?php echo $id_fact; ?>">
-			<?php echo $txt_fact; ?><br/>
+			<span class="txt_fact" data-id="<?php echo $id_fact; ?>"><?php echo $txt_fact; ?></span><br/>
 			<div class="footer_fact" data-id="<?php echo $id_fact; ?>">
 				<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php display_moderate_facts($id_fact); ?><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
 			</div>
