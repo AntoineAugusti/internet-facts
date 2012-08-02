@@ -265,7 +265,7 @@ img.baby_cry {
 .mini_icone.delete {
 	background-position: 0 0;
 }
-#textarea_text_fact
+#textarea_text_fact, textarea#text_fact
 {
 	width: 99%;
 	height: 50px;
