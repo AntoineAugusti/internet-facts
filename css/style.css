@@ -168,7 +168,7 @@ body {
 	box-shadow: 2px 5px 10px #E5E5E5;
 	-webkit-box-shadow: 2px 5px 10px #E5E5E5;
 }
-.login_form 
+.login_form, .search_form
 {
 	width: 400px;
 	margin-right: auto !important;
@@ -181,6 +181,18 @@ body {
 	background: url(/images/icones/login_form.png);
 	display: block;
 	margin-top: 60px;
+}
+.search_form input[type=text] {
+	margin-top: 15px;
+	width: 233px;
+}
+.img_search {
+	width: 64px;
+	height: 64px;
+	float: right;
+	background: url(/images/icones/search.png);
+	display: block;
+	margin: 45px 20px 0 0;
 }
 .celebrate {
 	height: 309px;
@@ -213,6 +225,9 @@ img.baby_cry {
 #submit_fact_user input[type=text], #submit_facts_user input[type=email]
 {
 	width: 200px;
+}
+.add_fact_intro {
+	margin: 50px 3em !important;
 }
 .margin_top_bottom_15 {
 	margin-top: 15px;
@@ -276,6 +291,32 @@ img.baby_cry {
 	height: 350px;
 	margin-top: 130px;
 	background: url('/images/404.jpg')
+}
+ul.result_users {
+	list-style: none !important;
+}
+ul.result_users li {
+	margin-bottom: 10px;
+}
+ul.result_users li a
+{
+	color: #555 !important;
+	background: #E0E0E0 url(/images/noise-gray.png) center;
+	padding: 3px 6px;
+	border: 1px solid transparent;
+	font-family: 'Ubuntu';
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-bottom: 10px;
+}
+ul.result_users li a:hover {
+	color: #678DB7 !important;
+	border: 1px solid #CCC !important;
+}
+a.black {
+	color: #555 !important;
+	border-bottom: 1px dashed #CCC;
 }
 #header {
 	background: #2A4785;
@@ -459,7 +500,7 @@ img.baby_cry {
 	width: 215px;
 	margin-left: 260px;
 }
-#intro, #intro_like {
+#intro, #intro_like, .intro_like {
 	background: url(/images/dark_gray.png);
 	margin:50px 0;
 	padding: 10px 20px;
