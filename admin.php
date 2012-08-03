@@ -10,13 +10,13 @@ if ((!$_SESSION['logged'] OR !isset($_SESSION['logged'])) AND $_GET['action'] !=
 		<div class="img_log fade"></div>
 		<h2>Sign in</h2>
 		<form action="/admin?action=send" method="post">
-			Username:<br>
-			<input type="text" name="username"/><br>
+			Username:<br/>
+			<input type="text" name="username"/><br/>
 			<br />
-			Password:<br>
-			<input type="password" name="password"/><br>
+			Password:<br/>
+			<input type="password" name="password"/><br/>
 			<br />
-			<input type="submit" value="Log me!"/><br>
+			<input type="submit" value="Log me!"/><br/>
 			<div class="clear"></div>
 		</form>
 	</div>
