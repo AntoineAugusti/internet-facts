@@ -4,7 +4,7 @@ include 'header.php';
 echo '<h1>Add a Fact</h1>';
 
 echo '
-<div id="intro_like">
+<div id="intro_like" class="add_fact_intro">
 	<div class="img_infos fade"></div>
 	<h2>Informations</h2>
 	Build with us Internet Facts and add your own Fact to the website.<br />
