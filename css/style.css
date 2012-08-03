@@ -201,6 +201,10 @@ body {
 	background: url(/images/celebrate.png);
 	display: block;
 }
+.pub_index {
+	width: 728px;
+	margin: 0 auto 40px auto;
+}
 img.baby_cry {
 	width: 420px;
 	height: 315px;

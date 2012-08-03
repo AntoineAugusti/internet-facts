@@ -161,6 +161,11 @@ include 'header.php';
 			</div>
 		<?php
 			$i++;
+
+			if ($i == ($nb_messages_page / 2) + 1)
+			{
+				echo $pub_leaderboard;
+			}
 		}
 
 		// Display buttons for pages except for fact.
@@ -171,6 +176,8 @@ include 'header.php';
 		else
 		{
 			// Display comments for single Facts
+			echo $pub_leaderboard;
+			
 			echo '
 			<h2>Leave a comment</h2>
 			<div id="facebook_comment_box">
