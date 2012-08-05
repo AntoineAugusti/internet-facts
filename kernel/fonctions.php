@@ -177,6 +177,19 @@ function display_moderate_facts($id)
 	</div>';
 }
 
+function caracteresAleatoires($nombreDeCaracteres)
+{
+	$string = ""; 
+	$chaine = "abcdefghijklmnpqrstuvwxyz123456789"; 
+	srand((double)microtime()*1000000);
+
+	for($i=0;$i<$nombreDeCaracteres; $i++)
+	{
+		$string .= $chaine[rand()%strlen($chaine)]; 
+	}
+	return $string;
+}
+
 function isset_is_int ($int)
 {
 	if (is_numeric($int))

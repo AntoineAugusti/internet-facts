@@ -182,6 +182,14 @@ body {
 	display: block;
 	margin-top: 60px;
 }
+.img_newsletter {
+	width: 128px;
+	height: 128px;
+	float: right;
+	background: url(/images/icones/newsletter.png);
+	display: block;
+	margin: 15px 0 0 25px;
+}
 .search_form input[type=text] {
 	margin-top: 15px;
 	width: 233px;
@@ -218,6 +226,21 @@ img.baby_cry {
 	-moz-box-shadow:0 1px 5px rgba(0,0,0,0.5),inset 0 -1px 0 rgba(0,0,0,0.3);
 	-webkit-box-shadow:0 1px 5px rgba(0,0,0,0.5),inset 0 -1px 0 rgba(0,0,0,0.3)
 }
+span.icon_24 {
+	display: inline-block;
+	background: url(/images/icones/sprite_24.png);
+	height: 24px;
+	width: 24px;
+	margin-right: 15px;
+	vertical-align: middle;
+}
+span.icon_24.email {
+	background-position: 0 0;
+	vertical-align: -3px !important;
+}
+span.icon_24.twitter {
+	background-position: -24px 0;
+}
 #intro_like .img_infos {
 	width: 128px;
 	height: 128px;
@@ -226,11 +249,11 @@ img.baby_cry {
 	display: block;
 	margin: 75px 35px 0 0;
 }
-#submit_fact_user input[type=text], #submit_facts_user input[type=email]
+#submit_fact_user input[type=text], #submit_facts_user input[type=email], #form_newsletter input[type=email]
 {
 	width: 200px;
 }
-.add_fact_intro {
+.add_fact_intro, .contact_intro, .newsletter_intro {
 	margin: 50px 3em !important;
 }
 .margin_top_bottom_15 {
