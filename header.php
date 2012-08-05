@@ -48,7 +48,7 @@ require 'kernel/config.php';
 			</div>
 
 			<div id="social-networks">
-				<a href="https://twitter.com/The_GoogleFacts" class="twitter-follow-button" data-show-count="false">Follow @The_GoogleFacts</a>
+				<a href="https://twitter.com/<?php echo $twitter_username; ?>" class="twitter-follow-button" data-show-count="false">Follow @<?php echo $twitter_username; ?></a>
 			</div>
 		</div>
 	</div><!-- END HEADER -->
