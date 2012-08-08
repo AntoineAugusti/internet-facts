@@ -205,7 +205,7 @@ function isset_is_int ($int)
 function display_title_and_description ()
 {
 	$default_title = ' | Internet Facts';
-	$default_description = ' Internet Facts: facts about everything in your everyday life that you don\'t know.';
+	$default_description = ' Internet Facts: facts about everything in your everyday life that you don\'t know. The Facts that you never knew in your life.';
 
 	if (empty($_GET['mod'])) // Not fact / random / author.
 	{
@@ -241,7 +241,7 @@ function display_title_and_description ()
 		}
 		else // Index ?
 		{
-			$title = 'Internet Facts | Facts about everything you want to know';
+			$title = 'Internet Facts | The Facts that you never knew in your life';
 			$description = substr($default_description, 1);
 		}
 	}
@@ -319,8 +319,8 @@ function cut_tweet($chaine)
 	$name_website = 'Internet Facts';
 
 	$lg_max = 117;
-	$longueur_max_ajout_twitter = 102;
-	$username_twitter = '@The_GoogleFacts';	
+	$twitter_username = '@FactsWikipedia';
+	$longueur_max_ajout_twitter = 118 - strlen($twitter_username);
 	
 	if (strlen($chaine) > $lg_max) 
 	{
@@ -333,11 +333,11 @@ function cut_tweet($chaine)
 	}
 	elseif (strlen($chaine) <= $longueur_max_ajout_twitter)
 	{
-		$chaine .= ' '.$username_twitter;
+		$chaine .= ' '.$twitter_username;
 	}
 
-	$search = array ('%', ' ');
-	$replace = array('%25', '%20');
+	$search = array ('%', ' ', '"');
+	$replace = array('%25', '%20', '%34');
 	$chaine = str_replace($search, $replace, $chaine);
 	return $chaine;
 }
