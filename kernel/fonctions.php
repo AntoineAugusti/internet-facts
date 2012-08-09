@@ -1,4 +1,63 @@
 <?php
+// NEWSLETTER 
+$day_today = date("D");
+
+if ($day_today == 'Mon') // Send on Monday
+{
+	$query_newsletter = mysql_fetch_array(mysql_query("SELECT send_newsletter FROM config WHERE id = '1'"));
+	$send_newsletter = $query_newsletter['send_newsletter'];
+
+	if ($send_newsletter == 0)
+	{
+		$message = $top_mail.mailRandomFacts(10).$end_mail;
+		$today = date("d/m/Y");
+		$subject = 'Newsletter - '.$today.'';
+
+		$query = mysql_query("SELECT email, code FROM newsletter");
+
+		while ($data = mysql_fetch_array($query)) 
+		{
+			$email = $data['email'];
+			$code = $data['code'];
+
+			$unsubscribe = '<br /><span style="font-size:80%">This email was adressed to you ('.$email.') because you are subscribed to our newsletter. If you want to unsubscribe, please follow <a href="http://internet-facts.com/newsletter/'.$code.'/" title="Unsubscribe" target="_blank">this link</a>.</span>';
+
+			$mail = mail ($email, $subject, $message.$unsubscribe, $headers);
+		}
+
+		$update = mysql_query("UPDATE config SET send_newsletter = '1' WHERE id = '1'");
+	}
+
+}
+elseif ($day == 'Tue') // Reset on Tuesday
+{
+	$query_newsletter = mysql_fetch_array(mysql_query("SELECT send_newsletter FROM config WHERE id = '1'"));
+	$send_newsletter = $query_newsletter['send_newsletter'];
+
+	if ($send_newsletter == 1)
+	{
+		$update = mysql_query("UPDATE config SET send_newsletter = '0' WHERE id = '1'"); 
+	}
+}
+
+function mailRandomFacts($number)
+{
+	$query = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author ORDER BY RAND() LIMIT ".$number."");
+	$message = '';
+
+	while ($result = mysql_fetch_array($query))
+	{
+		$id_fact = $result['id'];
+		$txt_fact = $result['text_fact'];
+		$auteur = $result['auteur']; 
+		$date_fact = $result['date'];
+
+		$message .= email_fact($id_fact, $txt_fact, $auteur, $date_fact);
+	}
+
+	return $message;
+}
+
 function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirection, $previous_page, $next_page)
 {
 	$page2 = $page + 1;
