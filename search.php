@@ -8,7 +8,7 @@ $search_form = '
 	<div class="img_search fade"></div>
 	<h2>Enter your search</h2>
 	<form action="/search" method="get">
-		<input type="text" name="q" placeholder="A work, a Fact, an user..."/><br/>
+		<input type="text" name="q" placeholder="A word, a Fact, an user..."/><br/>
 		<br />
 		<input type="submit" value="Search"/><br/>
 		<div class="clear"></div>
