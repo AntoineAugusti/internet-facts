@@ -380,6 +380,14 @@ a.black {
 	margin-right: 15px;
 	vertical-align: -8px;
 }
+#header .content #logo span#caption {
+	font-size: 12px;
+	font-family: "Open Sans";
+	margin-left: 161px;
+	color: #FFF;
+	margin-top: -1px;
+	float: left;
+}
 #header .content #social-networks {
 	float: right;
 	background: #555;

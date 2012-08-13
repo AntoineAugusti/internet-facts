@@ -45,6 +45,7 @@ require 'kernel/config.php';
 		<div class="content">
 			<div id="logo">
 				<a href="/" title="Internet Facts"><img src="/images/logo.png" alt="Logo Internet Facts" />Internet Facts</a>
+				<span id="caption">The Facts that you never knew in your life</span>
 			</div>
 
 			<div id="social-networks">
