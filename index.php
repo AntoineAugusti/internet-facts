@@ -1,15 +1,6 @@
 <?php
 include 'header.php';
 
-	// Display a description of the website only in the index. It can be hide thanks to Ajax and a session.
-	if (!isset($_SESSION['hide_intro']) AND $_SESSION['hide_intro'] != TRUE AND empty($_GET['mod']) AND empty($_GET['p']))
-	{
-		echo '
-		<div id="intro">
-			Internet Facts: the Facts that you never knew in your life.
-		</div>';
-	}
-
 	// Retrieve all quotes and display title and buttons for pages ONLY if we are in home or random.
 	if (empty($_GET['mod']) OR $_GET['mod'] == 'random' OR $_GET['mod'] == 'author')
 	{
