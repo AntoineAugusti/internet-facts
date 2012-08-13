@@ -293,6 +293,11 @@ function display_title_and_description ()
 			$title = 'Admin'.$default_title;
 			$description = 'Control everything with the admin panel.'.$default_description;
 		}
+		elseif (preg_match('#search#', $_SERVER['REQUEST_URI']))
+		{
+			$title = 'Search'.$default_title;
+			$description = 'Search a word, a Fact, a user.'.$default_description;
+		}
 		elseif (preg_match('#404#', $_SERVER['REQUEST_URI']))
 		{
 			$title = 'Error'.$default_title;
