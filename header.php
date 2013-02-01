@@ -16,7 +16,7 @@ require 'kernel/config.php';
 		<link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
 		<meta name="viewport" content="width=device-width">
 
-		<script src="//code.jquery.com/jquery-latest.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.8.0.min.js"></script>
 		<script src="/js/uniform.js"></script>
 
 		<script type="text/javascript">
