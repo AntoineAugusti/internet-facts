@@ -11,8 +11,7 @@
 			<div class="right">
 				&copy; <?php echo date("Y"); ?> internet-facts.com<br>
 				<br />
-				Made with love by <a href="//www.antoine-augusti.fr" title="Antoine AUGUSTI">Antoine AUGUSTI</a><br>
-				For <a href="//www.pretty-web.com" title="Pretty Web">Pretty Web</a><br>
+				Made with love by <a href="//www.antoine-augusti.fr" title="Antoine Augusti">Antoine Augusti</a><br>
 			</div>
 
 			<div class="clear"></div>
