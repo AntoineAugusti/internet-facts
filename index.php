@@ -6,15 +6,11 @@ include 'header.php';
 	{
 
 		if ($_GET['mod'] != 'author') // index or random
-		{
 			$donnees = mysql_fetch_array(mysql_query("SELECT COUNT(*) AS nb_facts FROM facts WHERE approved = '1'"));
-		}
 		else // author
 		{
-			if(!username_is_valid($_GET['username']) OR empty($_GET['username']))
-			{
+			if (!username_is_valid($_GET['username']) OR empty($_GET['username']))
 				header('Location: http://'.$domaine.'/404');
-			}
 			else
 			{
 				$username = mysql_real_escape_string($_GET['username']);
@@ -25,9 +21,7 @@ include 'header.php';
 		if (empty($_GET['mod'])) // index
 		{
 			if ((empty($_GET['p']) OR $_GET['p'] == 1))
-			{
 				echo '<h1>Latest Facts</h1>';
-			}
 			else
 			{
 				$get_page = (int) $_GET['p'];
@@ -37,9 +31,7 @@ include 'header.php';
 		elseif ($_GET['mod'] == 'random') // random
 		{
 			if ((empty($_GET['p']) OR $_GET['p'] == 1))
-			{
 				echo '<h1>Random Facts</h1>';
-			}
 			else
 			{
 				$get_page = (int) $_GET['p'];
@@ -52,14 +44,10 @@ include 'header.php';
 			$facts_text = 'fact';
 			
 			if ($nb_facts >= 2 Or $nb_facts == 0)
-			{
 				$facts_text .= 's';
-			}
 
 			if ((empty($_GET['p']) OR $_GET['p'] == 1))
-			{
 				echo '<h1>Facts '.$by.' <span class="blue">'.$username.'</span><span class="right"><span class="italic"><span class="blue">'.$nb_facts.'</span> '.$facts_text.'</span></h1>';
-			}
 			else
 			{
 				$get_page = (int) $_GET['p'];
@@ -75,21 +63,15 @@ include 'header.php';
 
 	// Display the title if we have only one fact and do the SQL query in order to loop
 	if (empty($_GET['mod'])) // index
-	{
 		$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author ORDER BY f.id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
-	}
-	elseif($_GET['mod'] == 'random') // random
-	{
+	elseif ($_GET['mod'] == 'random') // random
 		$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.id = f.id_author ORDER BY RAND() LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
-	}
 	elseif ($_GET['mod'] == 'fact') // fact
 	{
 		$id_fact = (int) $_GET['id'];
 
 		if (empty($id_fact))
-		{
 			header('Location: http://'.$domaine.'/404');
-		}
 		else
 		{
 			echo '<h1>Fact #'.$id_fact.'</h1>';
@@ -97,22 +79,16 @@ include 'header.php';
 			$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND f.id = '".$id_fact."' AND f.id_author = e.id");
 
 			if (mysql_num_rows($reponse) == 0)
-			{
 				header('Location: http://'.$domaine.'/404');
-			}
 		}
 
 	}
 	elseif ($_GET['mod'] == 'author') // author
 	{
 		if ($donnees['nb_facts'] == 0)
-		{
 			echo '<div class="error">We\'re sorry but this author hasn\'t approved facts yet.</div>';
-		}
 		else
-		{
 			$reponse = mysql_query("SELECT f.id id, f.text_fact text_fact, e.username AS auteur, f.date date FROM facts f, email e WHERE f.approved = '1' AND e.username = '".$username."' AND e.id = f.id_author ORDER BY f.id DESC LIMIT ".$premierMessageAafficher.", ".$nb_messages_page."");
-		}
 	}
 
 	if ($donnees['nb_facts'] != 0 OR mysql_num_rows($reponse) != 0)
@@ -131,13 +107,9 @@ include 'header.php';
 			$div_child = '';
 
 			if ($i == 1)
-			{
 				$div_child = ' first-child';
-			}
 			elseif ($i == $nb_messages_page)
-			{
 				$div_child = ' last-child';
-			}
 		?>
 			<div class="post<?php echo $div_child; ?>">
 				<?php echo $txt_fact; ?><br/>
@@ -157,9 +129,7 @@ include 'header.php';
 
 		// Display buttons for pages except for fact.
 		if (empty($_GET['mod']) OR $_GET['mod'] == 'random' OR $_GET['mod'] == 'author')
-		{
 			display_page_bottom($page, $nombreDePages, 'p', NULL, $previous_page, $next_page);
-		}
 		else
 		{
 			// Display comments for single Facts
