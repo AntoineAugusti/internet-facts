@@ -35,9 +35,7 @@ elseif ($day == 'Tue') // Reset on Tuesday
 	$send_newsletter = $query_newsletter['send_newsletter'];
 
 	if ($send_newsletter == 1)
-	{
 		$update = mysql_query("UPDATE config SET send_newsletter = '0' WHERE id = '1'"); 
-	}
 }
 
 function mailRandomFacts($number)
@@ -77,9 +75,7 @@ function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirec
 		else 
 		{
 			for ($num_page = '1';$num_page <= $page-1;$num_page++)
-			{
 				echo '<span class="page_bottom_number"><a href="?'.$nom_lien_page.'='.$num_page.''.$div_redirection.'">'.$num_page.'</a></span>'; 
-			}
 		}
 	}
 
@@ -88,13 +84,9 @@ function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirec
 		for ($num_page = $page;$num_page <= $page+2;$num_page++)
 		{
 			if ($num_page == $page)
-			{
 				echo '<span class="page_bottom_number_active"><a href="?'.$nom_lien_page.'='.$num_page.''.$div_redirection.'">'.$num_page.'</a></span>';
-			}
 			else
-			{
 				echo '<span class="page_bottom_number"><a href="?'.$nom_lien_page.'='.$num_page.''.$div_redirection.'">'.$num_page.'</a></span>';
-			}
 		}
 
 		echo '<span class="left" style="margin-left:5px;margin-top:-13px">...</span>';
@@ -105,25 +97,17 @@ function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirec
 		for ($num_page = $page;$num_page <= $nombreDePages;$num_page++)
 		{
 			if ($num_page == $page)
-			{
 				echo '<span class="page_bottom_number_active"><a href="?'.$nom_lien_page.'='.$num_page.''.$div_redirection.'">'.$num_page.'</a></span>';
-			}
 			else
-			{
 				echo '<span class="page_bottom_number"><a href="?'.$nom_lien_page.'='.$num_page.''.$div_redirection.'">'.$num_page.'</a></span>';
-			}
 		}
 	}
 
 	
 	if ($page < $nombreDePages)
-	{
 		echo '<span class="page_bottom"><a href="?'.$nom_lien_page.'='.$page2.''.$div_redirection.'" title="'.$next_page.'">'.$next_page.'</a></span>';
-	}
 	if ($page > 1)
-	{
 		echo '<span class="page_bottom"><a href="?'.$nom_lien_page.'='.$page3.''.$div_redirection.'" title="'.$previous_page.'">'.$previous_page.'</a></span>';
-	}
 
 	echo '<div class="clear"></div>';
 }
@@ -131,42 +115,29 @@ function display_page_bottom($page, $nombreDePages, $nom_lien_page, $div_redirec
 function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_page, $next_page, $div_redirection = NULL, $margin = FALSE)
 {
 	$nombreDePages  = ceil($nb_messages / $nb_messages_par_page);
+	
 	if (isset($_GET[$lien]))
-	{
 		$page = mysql_real_escape_string($_GET[$lien]);
-	}
 	else 
-	{
 		$page = 1; 
-	}
 
 	if ($page > $nombreDePages) 
-	{
 		$page = $nombreDePages;
-	}
 
 	$page2 = $page + 1;
 	$page3 = $page - 1;
 
 	$page_index = '';
 	if ($margin)
-	{
 		$margin_page = 'page_index';
-	}
 
 	
 	if ($page < $nombreDePages)
-	{
 		echo '<span class="page '.$margin_page.'"><a href="?'.$lien.'='.$page2.''.$div_redirection.'" title="'.$next_page.'">'.$next_page.'</a></span>';
-	}
 	if ($page > 1)
-	{
 		echo '<span class="page '.$margin_page.'"><a href="?'.$lien.'='.$page3.''.$div_redirection.'" title="'.$previous_page.'">'.$previous_page.'</a></span>';
-	}
 	if ($nombreDePages != 1)
-	{
 		echo '<br/>';
-	}
 
 	$premierMessageAafficher = ($page - 1) * $nb_messages_par_page;
 
@@ -175,34 +146,18 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 
 function username_is_valid ($username)
 {
-	if (preg_match("#^[a-z0-9_]{4,}$#", $username))
-	{	
-		return TRUE;
-	}
-	else
-	{	
-		return FALSE;
-	}
+	return preg_match("#^[a-z0-9_]{4,}$#", $username);
 }
 
 function email_is_valid ($email)
 {
-	if(preg_match("#[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
-	{
-		return TRUE;
-	}
-	else
-	{
-		return FALSE;
-	}
+	return preg_match("#[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email);
 }
 
 function meta_refresh ($time, $url)
 {
 	if (!is_numeric($time))
-	{
 		$time = '5';
-	}
 
 	echo '<meta http-equiv="refresh" content="'.$time.';url=\''.$url.'\'">';
 }
@@ -216,14 +171,10 @@ function display_active_page ($pattern)
 		$pattern = '#'.$pattern.'#';
 
 		if (preg_match($pattern, $_SERVER['REQUEST_URI']))
-		{
 			echo ' class="active"';
-		}
 	}
 	elseif ($pattern == 'random' AND preg_match('#random#', $_SERVER['REQUEST_URI']) OR ($pattern == 'index' AND ($_SERVER['REQUEST_URI'] == '/' OR preg_match('#\?p#', $_SERVER['REQUEST_URI'])) AND !preg_match('#random|author#', $_SERVER['REQUEST_URI'])))
-	{
 		echo ' class="active"';
-	}
 }
 
 function display_moderate_facts($id)
@@ -242,7 +193,7 @@ function caracteresAleatoires($nombreDeCaracteres)
 	$chaine = "abcdefghijklmnpqrstuvwxyz123456789"; 
 	srand((double)microtime()*1000000);
 
-	for($i=0;$i<$nombreDeCaracteres; $i++)
+	for ($i = 0;$i < $nombreDeCaracteres; $i++)
 	{
 		$string .= $chaine[rand()%strlen($chaine)]; 
 	}
@@ -251,14 +202,7 @@ function caracteresAleatoires($nombreDeCaracteres)
 
 function isset_is_int ($int)
 {
-	if (is_numeric($int))
-	{
-		return TRUE;
-	}
-	else
-	{
-		return FALSE;
-	}
+	return is_numeric($int);
 }
 
 function display_title_and_description ()
@@ -443,7 +387,6 @@ function captchaMath ()
 			$phrase = ''.$n1.' - '.$n2.'';
 		}
 	}
-	
 	
 	return array('42', $phrase);	
 }
