@@ -88,7 +88,7 @@ elseif($_SESSION['logged'] == TRUE)
 		<div class="post <?php echo $div_child; ?>" data-id="<?php echo $id_fact; ?>">
 			<span class="txt_fact" data-id="<?php echo $id_fact; ?>"><?php echo $txt_fact; ?></span><br/>
 			<div class="footer_fact" data-id="<?php echo $id_fact; ?>">
-				<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php display_moderate_facts($id_fact); ?><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
+				<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php display_moderate_facts($id_fact); ?><?php date_and_author ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
 			</div>
 		</div>
 	<?php

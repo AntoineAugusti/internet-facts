@@ -144,17 +144,17 @@ function display_page_top($nb_messages, $nb_messages_par_page, $lien, $previous_
 	return array($premierMessageAafficher, $nombreDePages, $page);
 }
 
-function username_is_valid ($username)
+function username_is_valid($username)
 {
 	return preg_match("#^[a-z0-9_]{4,}$#", $username);
 }
 
-function email_is_valid ($email)
+function email_is_valid($email)
 {
 	return preg_match("#[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email);
 }
 
-function meta_refresh ($time, $url)
+function meta_refresh($time, $url)
 {
 	if (!is_numeric($time))
 		$time = '5';
@@ -162,7 +162,7 @@ function meta_refresh ($time, $url)
 	echo '<meta http-equiv="refresh" content="'.$time.';url=\''.$url.'\'">';
 }
 
-function display_active_page ($pattern)
+function display_active_page($pattern)
 {
 	$special_pages = array('index', 'random');
 	
@@ -205,7 +205,7 @@ function isset_is_int ($int)
 	return is_numeric($int);
 }
 
-function display_title_and_description ()
+function display_title_and_description()
 {
 	$default_title = ' | Internet Facts';
 	$default_description = ' Internet Facts: facts about everything in your everyday life that you don\'t know. The Facts that you never knew in your life.';
@@ -303,12 +303,12 @@ function display_title_and_description ()
 	echo '<meta name="description" content="'.$description.'"/>'."\r\n\r\n";
 }
 
-function email_blue ($txt)
+function email_blue($txt)
 {
 	return '<span style="color:#678DB7;font-weight:bold">'.$txt.'</span>';
 }
 
-function email_fact ($id_fact, $txt_fact, $auteur, $date_fact)
+function email_fact($id_fact, $txt_fact, $auteur, $date_fact)
 {
 	$str = '
 	<div style="padding:15px 1.5em;color:#555;background:#E0E0E0;margin:0 3em 40px;line-height:25px;border-bottom:1px solid #CCC;text-align:justify;">
@@ -350,12 +350,12 @@ function cut_tweet($chaine)
 	return $chaine;
 }
 
-function date_et_auteur ($auteur, $date_fact, $on, $by, $view_his_facts) 
+function date_and_author($auteur, $date_fact, $on, $by, $view_his_facts) 
 {
 	echo '<span class="right">'.$by.' <a href="/author/'.$auteur.'" title="'.$view_his_facts.'">'.$auteur.'</a> '.$on.' '.$date_fact.'</span><br/>';
 }
 
-function share_fb_twitter ($id_fact, $txt_fact, $share) 
+function share_fb_twitter($id_fact, $txt_fact, $share) 
 {
 	$domaine = 'internet-facts.com';
 	$name_website = 'Internet Facts';
@@ -365,7 +365,7 @@ function share_fb_twitter ($id_fact, $txt_fact, $share)
 	echo '<div class="share_fb_twitter"><span class="fade_jquery"><div class="fb-like" data-href="http://internet-facts.com/fact-'.$id_fact.'" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div></span><span class="right fade_jquery"><a href="http://twitter.com/share?url=http://'.$domaine.'/fact/'.$id_fact.'/&text='.$txt_tweet.'" class="twitter-share-button" data-count="none">Tweet</a></span></div>';
 }
 
-function captchaMath ()
+function captchaMath()
 {
 	$n1 = mt_rand(1,84);
 
@@ -391,7 +391,7 @@ function captchaMath ()
 	return array('42', $phrase);	
 }
 
-function captcha ()
+function captcha()
 {
 	list($resultat, $phrase) = captchaMath();
 	$_SESSION['captcha'] = $resultat;

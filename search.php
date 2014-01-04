@@ -129,7 +129,7 @@ else
 				<div class="post<?php echo $div_child; ?>">
 					<?php echo $txt_fact; ?><br/>
 					<div class="footer_fact">
-						<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php date_et_auteur ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
+						<a href="/fact/<?php echo $id_fact; ?>/" title="View Fact #<?php echo $id_fact; ?>">#<?php echo $result['id']; ?></a><?php date_and_author ($auteur,$date_fact,$on,$by,$view_his_facts); ?>
 					</div>
 					<?php share_fb_twitter ($id_fact,$txt_fact,$share); ?> 
 				</div>
