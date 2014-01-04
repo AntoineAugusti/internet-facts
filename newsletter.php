@@ -6,7 +6,8 @@ echo '<h1>Newsletter</h1>';
 
 if (empty($code))
 {
-	echo '
+	?>
+
 	<div id="intro_like" class="newsletter_intro">
 		<div class="img_newsletter"></div>
 		Want to learn amazing things every Monday morning? Well, you are totally right!<br/>
@@ -14,9 +15,8 @@ if (empty($code))
 		By subscribing to the newsletter you will receive every Monday morning in your inbox 15 random Facts from Internet Facts.<br/>
 		<br/>
 		The opportunity to start the week in a good mood with your favorite Facts!<br/>
-	</div>';
+	</div>
 
-	echo '
 	<div class="post">
 		<h2>Subscribe</h2>
 		<div id="notification"></div>
@@ -27,7 +27,9 @@ if (empty($code))
 			<br/>
 			<input type="submit" value="Subscribe!"/>
 		</form>
-	</div>';
+	</div>
+
+	<?php
 }
 else
 {
@@ -35,9 +37,7 @@ else
 	$exist_email = mysql_num_rows($query);
 
 	if ($exist_email != 1)
-	{
 		$result = '<div class="error">We can\'t find an email address with this code (<span class="blue">'.$code.'</span>).</div>';
-	}
 	else
 	{
 		$delete = mysql_query("DELETE FROM newsletter WHERE code = '".$code."'");
@@ -50,9 +50,9 @@ else
 			$result = '<div class="success">You are now unsubscribed with your email address (<span class="blue">'.$email.'</span>).</div>';
 		}
 		else
-		{
+
 			$result = 'An error occured';
-		}
+
 	}
 
 	echo '

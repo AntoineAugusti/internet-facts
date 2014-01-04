@@ -17,17 +17,13 @@ $search_form = '
 ';
 
 if (empty($_GET['q']) OR $_GET['q'] == 'A work, a Fact, an user...')
-{
 	echo $search_form;
-}
 else
 {
 	$value_search = htmlspecialchars(mysql_real_escape_string($_GET['q']));
 
 	if (strlen($value_search) < 50)
-	{
 		$query = mysql_query("INSERT INTO search (text) VALUES ('".$value_search."') ON DUPLICATE KEY UPDATE value = value + 1");
-	}
 
 	// Recherche avec MATCH sur l'index FULLTEXT pour des résultats plus pertinents
 	if (strlen($value_search) >= 4)
@@ -53,17 +49,17 @@ else
 	{
 		$result_text = 'result';
 		if ($num_rows_result >= 2)
-		{
+
 			$result_text .= 's';
-		}
+
 
 		if ($num_rows_facts >= 1) // We've got at least a Fact
 		{
 			$fact_text = 'Fact';
 			if ($num_rows_facts >= 2)
-			{
+
 				$fact_text .= 's';
-			}
+
 
 			$result_detail = '(<span class="blue italic">'.$num_rows_facts.'</span> <a href="#facts" class="black" title="View Fact results">'.$fact_text.'</a>';
 
@@ -71,24 +67,24 @@ else
 			{
 				$user_text = 'User';
 				if ($num_rows_users >= 2)
-				{
+
 					$user_text .= 's';
-				}
+
 
 				$result_detail .= ' - <span class="blue italic">'.$num_rows_users.'</span> <a href="#users" class="black" title="View users results">'.$user_text.'</a>)';
 			}
 			else
-			{
+
 				$result_detail .= ')';
-			}
+
 		}
 		else // We've got at least a user (but no Facts)
 		{
 			$user_text = 'User';
 			if ($num_rows_users >= 2)
-			{
+
 				$user_text .= 's';
-			}
+
 
 			$result_detail = '(<span class="blue italic">'.$num_rows_users.'</span> <a href="#users" class="black" title="View users results">'.$user_text.'</a>)';
 		}
@@ -118,13 +114,13 @@ else
 				$div_child = '';
 
 				if ($i == 1)
-				{
+
 					$div_child = ' first-child';
-				}
+
 				elseif ($i == $num_rows_facts)
-				{
+
 					$div_child = ' last-child';
-				}
+
 			?>
 				<div class="post<?php echo $div_child; ?>">
 					<?php echo $txt_fact; ?><br/>
@@ -162,7 +158,5 @@ else
 
 	} 
 }
-
-
 
 include 'footer.php';

@@ -5,7 +5,8 @@ echo '<h1>Admin Panel</h1>';
 
 if ((!$_SESSION['logged'] OR !isset($_SESSION['logged'])) AND $_GET['action'] != 'send') // Login Form
 {
-	echo '
+	?>
+	
 	<div class="post first-child login_form">
 		<div class="img_log fade"></div>
 		<h2>Sign in</h2>
@@ -20,7 +21,8 @@ if ((!$_SESSION['logged'] OR !isset($_SESSION['logged'])) AND $_GET['action'] !=
 			<div class="clear"></div>
 		</form>
 	</div>
-	';
+
+	<?php
 }
 elseif ($_GET['action'] == 'send') // Send the form
 {
@@ -52,11 +54,9 @@ elseif($_SESSION['logged'] == TRUE)
 	$txt_fact = 'Fact';
 
 	if ($nb_facts_moderation >= 2)
-	{
 		$txt_fact .= 's';
-	}
 
-	echo '
+	?>
 	<h2>Add a Fact</h2>
 	<div class="post first-child">
 		<div id="notification"></div>
@@ -67,9 +67,9 @@ elseif($_SESSION['logged'] == TRUE)
 			<div class="clear"></div>
 		</form>
 	</div>
-	<h2>Moderate Facts<span class="right"><span class="blue italic" id="nb_facts_moderation">'.$nb_facts_moderation.'</span> <span id="txt_fact">'.$txt_fact.'</span></span></h2>
-	';
-
+	<h2>Moderate Facts<span class="right"><span class="blue italic" id="nb_facts_moderation"><?php echo $nb_facts_moderation; ?></span> <span id="txt_fact"><?php echo $txt_fact; ?></span></span></h2>
+	
+	<?php
 	while ($result = mysql_fetch_array($query))
 	{
 		$id_fact = $result['id'];
@@ -81,9 +81,7 @@ elseif($_SESSION['logged'] == TRUE)
 		$div_child = '';
 
 		if ($i == 1)
-		{
 			$div_child = 'first-child';
-		}
 	?>
 		<div class="post <?php echo $div_child; ?>" data-id="<?php echo $id_fact; ?>">
 			<span class="txt_fact" data-id="<?php echo $id_fact; ?>"><?php echo $txt_fact; ?></span><br/>

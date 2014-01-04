@@ -1,9 +1,8 @@
 <?php
 include 'header.php';
+?>
+<h1>Add a Fact</h1>
 
-echo '<h1>Add a Fact</h1>';
-
-echo '
 <div id="intro_like" class="add_fact_intro">
 	<div class="img_infos fade"></div>
 	<h2>Informations</h2>
@@ -41,7 +40,7 @@ echo '
 		</form>
 	</div>
 </div>
-';
 
+<?php
 include 'footer.php';
 ?>
