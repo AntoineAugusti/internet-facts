@@ -57,7 +57,7 @@ else
 
 	echo '
 	<div class="post">
-		<h2>Unsuscribe</h2>
+		<h2>Unsubscribe</h2>
 		'.$result.'
 	</div>';
 }
